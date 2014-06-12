@@ -1,0 +1,4 @@
+pytest
+model_mommy
+factory_boy
+pytest-django

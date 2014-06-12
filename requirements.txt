@@ -1,0 +1,6 @@
+git+git://github.com/django/django.git@1.7b1
+dj-database-url==0.2.2
+django-redis==3.5.0
+psycopg2==2.4.5
+redis==2.9.1
+pytz

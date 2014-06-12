@@ -1,0 +1,17 @@
+web:
+  build: .
+  ports:
+    - 8000:8000
+  volumes:
+    - .:/code
+  links:
+    - db
+    - redis
+db:
+  build: provisioner/db
+  ports:
+    - 5432:5432
+redis:
+  image: trackmaven/redis
+  ports:
+    - 6379:6379
