@@ -1,11 +1,10 @@
-# Ubuntu 13.04 to get Python 2.7.4
-FROM stackbrew/ubuntu:raring
+FROM stackbrew/ubuntu:14.04
 
 RUN apt-get -q update
 RUN apt-get install -y python python-pip python-dev libxml2-dev libxslt-dev libpq-dev python-psycopg2 git
 
 # Install Ruby + Foreman
-RUN apt-get install -y ruby rubygems
+RUN apt-get install -y ruby
 RUN gem install foreman
 
 # Remove unnecessary packages

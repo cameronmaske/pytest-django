@@ -10,8 +10,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 import os
 import sys
-import dj_database_url
-import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -21,7 +19,7 @@ sys.path.append(os.path.join(PROJECT_ROOT, 'apps'))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', "CHANGE_ME")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Local app.
-    'base',
+    'example',
 )
 
 
@@ -70,20 +68,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'simple_test_db'
-    }
-}
-
-# Cache (redis)
-
-REDIS_URL = urlparse.urlparse(os.environ.get('REDIS_URL', 'redis://localhost:6379'))
-CACHES = {
-    "default": {
-        "BACKEND": "redis_cache.cache.RedisCache",
-        "LOCATION": REDIS_URL.netloc,
-        "OPTIONS": {
-            "DB": 1,
-            "CLIENT_CLASS": "redis_cache.client.DefaultClient",
-        }
     }
 }
 
